@@ -62,6 +62,9 @@ open class OfflineBar: UIView {
     open var offlineTextColor = UIColor.white
     open var connectingTextColor = UIColor.white
     open var connectedTextColor = UIColor.white
+    open var offlineButtonTintColor = UIColor.white
+    open var connectingButtonTintColor = UIColor.white
+    open var connectedButtonTintColor = UIColor.white
     
     open var offlineText = "Offline"
     open var connectingText = "Connecting..."
@@ -164,7 +167,7 @@ open class OfflineBar: UIView {
                                                                           views: ["topLayoutGuide": viewController.topLayoutGuide, "self": self])
         )
     }
-
+    
     
     // MARK: - Notification Action
     
@@ -285,12 +288,17 @@ open class OfflineBar: UIView {
     
     private func makeRightButton() -> UIButton {
         let button = UIButton(frame: .zero)
+        let bundle = Bundle(path: "./Resouces/OfflineBar.xcassets")
         switch self.style {
         case .reload:
-            button.setImage(UIImage(named: "reload" ), for: .normal)
+            var image = UIImage(named: "reload", in: bundle, compatibleWith: nil)
+            image = image.withRenderingMode(.alwaysTemplate)
+            button.setImage(image, for: .normal)
             button.addTarget(self, action: #selector(OfflineBar.rightButtonDidTap(_:)), for: .touchUpInside)
         case .close:
-            button.setImage(UIImage(named: "close" ), for: .normal)
+            var image = UIImage(named: "close", in: bundle, compatibleWith: nil)
+            image = image.withRenderingMode(.alwaysTemplate)
+            button.setImage(image, for: .normal)
             button.addTarget(self, action: #selector(OfflineBar.rightButtonDidTap(_:)), for: .touchUpInside)
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -298,9 +306,10 @@ open class OfflineBar: UIView {
     }
     
     // MARK: - Set Views State
-
+    
     private func setViewsOfflineState() {
         self.rightButton.isHidden = false
+        self.rightButton.tintColor = self.offlineButtonTintColor
         self.titleLabel.text = self.offlineText
         self.titleLabel.textColor = self.offlineTextColor
         self.baseView.backgroundColor = self.offlineBackgoundColor
@@ -308,6 +317,7 @@ open class OfflineBar: UIView {
     
     private func setViewsConnectingState() {
         self.rightButton.isHidden = true
+        self.rightButton.tintColor = self.connectingButtonTintColor
         self.titleLabel.text = self.connectingText
         self.titleLabel.textColor = self.connectingTextColor
         self.baseView.backgroundColor = self.connectingBackgoundColor
@@ -315,6 +325,7 @@ open class OfflineBar: UIView {
     
     private func setViewsConnectedState() {
         self.rightButton.isHidden = true
+        self.rightButton.tintColor = self.connectedButtonTintColor
         self.titleLabel.text = self.connectedText
         self.titleLabel.textColor = self.connectedTextColor
         self.baseView.backgroundColor = self.connectedBackgoundColor
@@ -333,6 +344,6 @@ open class OfflineBar: UIView {
             self.delegate?.offlineBar?(self, didTappedCloseButton: sender)
         }
     }
-
+    
 }
 
