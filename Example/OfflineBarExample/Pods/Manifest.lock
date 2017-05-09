@@ -1,0 +1,25 @@
+PODS:
+  - OfflineBar (0.1):
+    - Reachability (~> 3.2)
+  - Reachability (3.2)
+
+DEPENDENCIES:
+  - OfflineBar (from `../../.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  OfflineBar:
+    :branch: master
+    :git: ../../.git
+
+CHECKOUT OPTIONS:
+  OfflineBar:
+    :commit: 2b02c60861416d5318857ca2bd4b9c81eca61115
+    :git: ../../.git
+
+SPEC CHECKSUMS:
+  OfflineBar: d641b2162772ac2668ba0ac82a6e3aeb56d56793
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+
+PODFILE CHECKSUM: 7f86d04d4f6cd781de34b6e8c09e2ea6dec50961
+
+COCOAPODS: 1.2.0
