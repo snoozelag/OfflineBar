@@ -126,7 +126,7 @@ open class OfflineBar: UIView {
                                                                        options: NSLayoutFormatOptions(rawValue: 0),
                                                                        metrics: nil,
                                                                        views: ["rightButton": self.rightButton]))
-        self.baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[titleLabel]-8-[rightButton]-8-|",
+        self.baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(>=16,<=47)-[titleLabel]-8-[rightButton]-8-|",
                                                                     options: NSLayoutFormatOptions(rawValue: 0),
                                                                     metrics: nil,
                                                                     views: ["titleLabel": self.titleLabel, "rightButton": self.rightButton]))
