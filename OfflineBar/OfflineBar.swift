@@ -113,8 +113,8 @@ open class OfflineBar: UIView {
     // MARK: -  Configure Views
     
     private func setupSubviews() {
-        self.baseView = makeBaseView()
-        self.titleLabel = makeTitleLabel()
+        self.baseView = self.makeBaseView()
+        self.titleLabel = self.makeTitleLabel()
         self.rightButton = self.makeRightButton()
         self.baseView.addSubview(self.titleLabel)
         self.baseView.addSubview(self.rightButton)
@@ -172,6 +172,7 @@ open class OfflineBar: UIView {
     // MARK: - Notification Action
     
     private func addObserverReachability() {
+        Reachability.forInternetConnection().startNotifier()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(OfflineBar.reachabilityChanged(_:)),
                                                name: NSNotification.Name.reachabilityChanged,
