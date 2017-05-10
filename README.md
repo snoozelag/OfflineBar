@@ -10,7 +10,7 @@
 
 **In facebook or slack of ios app, offline display bar similar to the one that is displayed.**
 
-![OfflineBar](https://github.com/terutoyamasaki/OfflineBar/blob/master/README_resources/OfflineBar20170509.gif)
+![OfflineBar](https://github.com/terutoyamasaki/OfflineBar/blob/master/README_resources/OfflineBarDemo20170511.gif)
 
 ## Requirements ##
 * Swift 3.0
@@ -26,7 +26,26 @@ pod "OfflineBar"
 ```
 
 Then `$ pod install`
-- Add `import OfflineBar` to the top of your files where you wish to use it.
+- Add `import OfflineBar` to the top of your files where you wish to use it.  
+  
+## Usage ##
+  
+```swift
+
+private var offlineBar: OfflineBar!
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+self.offlineBar = OfflineBar(addedTo: self, style: .reload) // like Slack
+}
+```
+  
+or
+
+```swift
+self.offlineBar = OfflineBar(addedTo: self, style: .close) // like Facebook
+```
 
 ##### See also:  
 - [:link: iOS Example Project](https://github.com/terutoyamasaki/OfflineBar/tree/master/Example/OfflineBarExample)
