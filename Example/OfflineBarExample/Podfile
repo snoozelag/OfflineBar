@@ -6,7 +6,7 @@ target 'OfflineBarExample' do
   use_frameworks!
 
   # Pods for OfflineBarExample
-  pod 'OfflineBar'
+  pod 'OfflineBar', :git => '../../.git'
   
   target 'OfflineBarExampleTests' do
     inherit! :search_paths

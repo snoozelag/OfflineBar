@@ -57,8 +57,8 @@ open class OfflineBar: UIView {
     
     // Color
     open var offlineBackgoundColor = UIColor(red: 98/255, green: 104/255, blue: 112/255, alpha: 1.0)
-    open var connectingBackgoundColor = UIColor(red: 65/255, green: 187/255, blue: 133/255, alpha: 1.0)
-    open var connectedBackgoundColor = UIColor(red: 98/255, green: 104/255, blue: 112/255, alpha: 1.0)
+    open var connectingBackgoundColor = UIColor(red: 98/255, green: 104/255, blue: 112/255, alpha: 1.0)
+    open var connectedBackgoundColor = UIColor(red: 65/255, green: 187/255, blue: 133/255, alpha: 1.0)
     open var offlineTextColor = UIColor.white
     open var connectingTextColor = UIColor.white
     open var connectedTextColor = UIColor.white
@@ -192,11 +192,21 @@ open class OfflineBar: UIView {
     }
     
     func reachabilityChanged(_ notification: NSNotification) {
-        self.switchConnectivityForInternetConection()
+        switch self.style {
+        case .reload:
+            self.switchConnectivityForInternetConection()
+        case .close:
+            self.switchVisibilityForInternetConection()
+        }
     }
     
     func applicationWillEnterForeground(_ notification: NSNotification) {
-        self.switchConnectivityForInternetConection()
+        switch self.style {
+        case .reload:
+            self.switchConnectivityForInternetConection()
+        case .close:
+            self.switchVisibilityForInternetConection()
+        }
     }
     
     func switchConnectivityForInternetConection() {
@@ -211,6 +221,7 @@ open class OfflineBar: UIView {
     func switchVisibilityForInternetConection() {
         guard self.state == .hidden || self.state == .offline || self.state == .connected else { return }
         if Reachability.forInternetConnection().isReachable() {
+            self.setViewsConnectedState()
             self.hide()
         } else {
             self.show()
@@ -223,7 +234,7 @@ open class OfflineBar: UIView {
         guard self.state == .offline else { return }
         self.state = .connecting
         self.setViewsConnectingState()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if Reachability.forInternetConnection().isReachable() {
                 self.state = .connected
                 self.setViewsConnectedState()
@@ -288,17 +299,19 @@ open class OfflineBar: UIView {
     
     private func makeRightButton() -> UIButton {
         let button = UIButton(frame: .zero)
-        let bundle = Bundle(path: "./Resouces/OfflineBar.xcassets")
+        let bundle = Bundle(for: OfflineBar.self)
         switch self.style {
         case .reload:
             var image = UIImage(named: "reload", in: bundle, compatibleWith: nil)
-            image = image.withRenderingMode(.alwaysTemplate)
+            image = image?.withRenderingMode(.alwaysTemplate)
             button.setImage(image, for: .normal)
+            button.tintColor = .white
             button.addTarget(self, action: #selector(OfflineBar.rightButtonDidTap(_:)), for: .touchUpInside)
         case .close:
             var image = UIImage(named: "close", in: bundle, compatibleWith: nil)
-            image = image.withRenderingMode(.alwaysTemplate)
+            image = image?.withRenderingMode(.alwaysTemplate)
             button.setImage(image, for: .normal)
+            button.tintColor = .white
             button.addTarget(self, action: #selector(OfflineBar.rightButtonDidTap(_:)), for: .touchUpInside)
         }
         button.translatesAutoresizingMaskIntoConstraints = false

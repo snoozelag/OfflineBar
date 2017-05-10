@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.offlineBar = OfflineBar(addedTo: self, style: .reload)
+        self.offlineBar = OfflineBar(addedTo: self, style: .reload) // like Slack
+//        self.offlineBar = OfflineBar(addedTo: self, style: .close) // like Facebook
     }
 }
