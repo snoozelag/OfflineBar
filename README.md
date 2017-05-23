@@ -10,7 +10,7 @@
 
 **In facebook or slack of ios app, offline display bar similar to the one that is displayed.**
 
-![OfflineBar](https://github.com/terutoyamasaki/OfflineBar/blob/master/README_resources/OfflineBarDemo20170511.gif)
+![OfflineBar](https://github.com/snoozelag/OfflineBar/blob/master/README_resources/OfflineBarDemo20170511.gif)
 
 ## Requirements ##
 * Swift 3.0
@@ -48,10 +48,13 @@ self.offlineBar = OfflineBar(addedTo: self, style: .close) // like Facebook
 ```
 
 ##### See also:  
-- [:link: iOS Example Project](https://github.com/terutoyamasaki/OfflineBar/tree/master/Example/OfflineBarExample)
+- [:link: iOS Example Project](https://github.com/snoozelag/OfflineBar/tree/master/Example/OfflineBarExample)
 
+## Author
+  
+Teruto Yamasaki, y.teruto@gmail.com
+  
 ## License ##
-
+  
 The MIT License (MIT)
-
-Copyright (c) 2016 Teruto Yamasaki
+See the LICENSE file for more info.  

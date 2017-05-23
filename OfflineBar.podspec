@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'OfflineBar'
-  s.version  = '0.1.4'
+  s.version  = '0.1.5'
   s.license  = 'MIT'
   s.summary  = 'OfflineBar is a custom view that looks like the bar you see when facebook or slack iOS app is offline.'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
