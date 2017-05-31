@@ -30,21 +30,23 @@ Then `$ pod install`
   
 ## Usage ##
   
+Here is the code for this example project. .  
 ```swift
+import UIKit
+import OfflineBar
 
-private var offlineBar: OfflineBar!
+class ViewController: UIViewController {
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    private var offlineBar: OfflineBar!
 
-self.offlineBar = OfflineBar(addedTo: self, style: .reload) // like Slack
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.offlineBar = OfflineBar(addedTo: self, style: .reload) // like Slack style
+//           or
+//        self.offlineBar = OfflineBar(addedTo: self, style: .close) // like Facebook style
+    }
 }
-```
-  
-or
-
-```swift
-self.offlineBar = OfflineBar(addedTo: self, style: .close) // like Facebook
 ```
 
 ##### See also:  
